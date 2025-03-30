@@ -1,8 +1,10 @@
 'use client'
+
 import { useState } from 'react'
 import PropertyCard from './PropertyCard'
-import { properties } from './propertyData' // ✅ Ensure only dummy data is used
+import { properties } from './propertyData' // Ensure only dummy data is used
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function FeaturedProperty() {
   const itemsPerPage = 3 // ✅ Number of properties per page
@@ -37,16 +39,24 @@ export default function FeaturedProperty() {
 
       {/* 🔹 Property Cards (Paginated) */}
       <div className='mt-10'>
-       
-
         {properties.length > 0 ? (
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center'>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center'
+          >
             {displayedProperties.map((property) => (
-              <div key={property.id} className='w-full flex justify-center'>
+              <motion.div
+                key={property.id}
+                className='w-full flex justify-center'
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
                 <PropertyCard property={property} />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <p className='text-gray-400 text-center'>No properties available.</p>
         )}

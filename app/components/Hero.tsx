@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function Herosection() {
   return (
@@ -30,22 +32,27 @@ export default function Herosection() {
             </div>
           </div>
 
-          {/* Stats Section */}
+          {/* Stats Section with Animation */}
           <div className='grid grid-cols-2 sm:flex gap-4 mt-10 justify-center sm:justify-start'>
             {[
               { number: '200+', text: 'Happy Customers' },
               { number: '10k+', text: 'Properties For Clients' },
               { number: '16+', text: 'Years of Experience' },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0px 0px 20px rgba(112, 59, 247, 0.4)',
+                }}
+                transition={{ duration: 0.3 }}
                 className='p-6 border rounded-lg bg-[#1A1A1A] border-[#262626] text-center'
               >
                 <h1 className='text-2xl font-extrabold'>{item.number}</h1>
                 <p className='text-sm text-[#999999] font-extralight'>
                   {item.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -63,7 +70,7 @@ export default function Herosection() {
         </div>
       </div>
 
-      {/* ✅ Features Section */}
+      {/* ✅ Features Section with Animation */}
       <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center px-6 sm:px-12 lg:px-32 my-10'>
         {[
           { src: '/home-icon.svg', text: 'Find Your Dream Home' },
@@ -71,17 +78,19 @@ export default function Herosection() {
             src: '/propertymanagement-icon.svg',
             text: 'Unlock Property Value',
           },
-          {
-            src: '/property-icon.svg',
-            text: 'Effortless Property Management',
-          },
+          { src: '/property-icon.svg', text: 'Effortless Property Management' },
           {
             src: '/investment-icon.svg',
             text: 'Smart Investments, Informed Decisions',
           },
         ].map((feature, index) => (
-          <div
+          <motion.div
             key={index}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0px 0px 20px rgba(112, 59, 247, 0.4)',
+            }}
+            transition={{ duration: 0.3 }}
             className='p-6 border rounded-lg bg-[#1A1A1A] border-[#262626]'
           >
             <Image
@@ -92,7 +101,7 @@ export default function Herosection() {
               className='w-16 h-16 mx-auto'
             />
             <h1 className='m-3'>{feature.text}</h1>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

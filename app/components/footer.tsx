@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Logo */}
         <Link href='#'>
           <Image
-            src='/Images/Logo.png'
+            src='/logo.svg'
             alt='App logo'
             width={150}
             height={150}

@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { TeamMemberData } from '../components/teamData'
 import { Briefcase, CheckCircle, LifeBuoy } from 'lucide-react' // Import Lucide icons
 
@@ -11,78 +12,64 @@ interface TeamMemberData {
   bio: string
 }
 
-
-
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState<'mission' | 'vision'>('mission')
   const [expandedMember, setExpandedMember] = useState<string | null>(null)
 
   return (
-    <div className='text-white px-6 sm:px-16 pt-32'>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className='text-white px-6 sm:px-16 pt-32'
+    >
       {/* ✅ Introduction */}
-      <div className='text-center sm:text-left'>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
         <h1 className='text-3xl font-bold'>About Estatein</h1>
         <p className='text-[#999999] text-base mt-3 max-w-lg leading-relaxed'>
           Estatein is built to simplify real estate transactions. Whether you
           are buying, selling, or renting, we ensure a seamless and stress-free
           experience.
         </p>
-      </div>
+      </motion.div>
 
       {/* ✅ Mission & Vision Tabs */}
       <div className='mt-12'>
         <div className='flex border-b border-[#262626] justify-center sm:justify-start'>
-          <button
-            className={`px-6 py-3 text-sm font-medium transition w-1/2 sm:w-auto text-center ${
-              activeTab === 'mission'
-                ? 'border-b-2 border-[#703BF7] text-[#703BF7]'
-                : 'text-[#999999]'
-            }`}
-            onClick={() => setActiveTab('mission')}
-          >
-            Our Mission
-          </button>
-          <button
-            className={`px-6 py-3 text-sm font-medium transition w-1/2 sm:w-auto text-center ${
-              activeTab === 'vision'
-                ? 'border-b-2 border-[#703BF7] text-[#703BF7]'
-                : 'text-[#999999]'
-            }`}
-            onClick={() => setActiveTab('vision')}
-          >
-            Our Vision
-          </button>
+          {['mission', 'vision'].map((tab) => (
+            <button
+              key={tab}
+              className={`px-6 py-3 text-sm font-medium transition w-1/2 sm:w-auto text-center ${
+                activeTab === tab
+                  ? 'border-b-2 border-[#703BF7] text-[#703BF7]'
+                  : 'text-[#999999]'
+              }`}
+              onClick={() => setActiveTab(tab as 'mission' | 'vision')}
+            >
+              {tab === 'mission' ? 'Our Mission' : 'Our Vision'}
+            </button>
+          ))}
         </div>
-
-        {/* Tab Content */}
-        <div className='mt-6 bg-[#1A1A1A] p-6 rounded-xl border border-[#262626]'>
-          {activeTab === 'mission' ? (
+        <AnimatePresence mode='wait'>
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className='mt-6 bg-[#1A1A1A] p-6 rounded-xl border border-[#262626]'
+          >
             <p className='text-base text-[#cccccc] leading-relaxed'>
-              We aim to transform the real estate industry by making it more
-              transparent, efficient, and accessible to everyone. Our goal is to
-              eliminate barriers, streamline processes, and empower individuals
-              with the information and tools they need to make informed
-              decisions. By leveraging technology and innovation, we strive to
-              create a seamless experience for buyers, sellers, and investors,
-              ensuring that real estate transactions are simpler, faster, and
-              more trustworthy than ever before.
+              {activeTab === 'mission'
+                ? 'We aim to transform the real estate industry by making it more transparent, efficient, and accessible to everyone...'
+                : 'Our vision is to be the most trusted and innovative real estate platform, connecting buyers and sellers globally...'}
             </p>
-          ) : (
-            <p className='text-base text-[#cccccc] leading-relaxed'>
-              Our vision is to be the most trusted and innovative real estate
-              platform, connecting buyers and sellers globally through seamless,
-              technology-driven solutions. We strive to create a transparent and
-              efficient marketplace where individuals and businesses can
-              confidently navigate property transactions with ease. By
-              leveraging cutting-edge technology, data-driven insights, and a
-              user-centric approach, we aim to revolutionize the way people buy,
-              sell, and invest in real estate. Our commitment to trust,
-              innovation, and global accessibility ensures that we empower users
-              with the tools and resources they need to make informed decisions
-              and achieve their real estate goals effortlessly.
-            </p>
-          )}
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* ✅ Why Choose Us */}
@@ -94,30 +81,32 @@ export default function AboutUs() {
           {[
             {
               title: 'Expert Agents',
-              desc: 'Our experienced professionals guide you through every step.',
-              icon: <Briefcase size={50} className='text-[#703BF7]' />, // Using Lucide icon
+              desc: 'Our experienced professionals guide you.',
+              icon: <Briefcase size={50} className='text-[#703BF7]' />,
             },
             {
               title: 'Verified Listings',
-              desc: 'We guarantee genuine and authenticated property listings.',
-              icon: <CheckCircle size={50} className='text-[#34D399]' />, // Using Lucide icon
+              desc: 'We guarantee genuine listings.',
+              icon: <CheckCircle size={50} className='text-[#34D399]' />,
             },
             {
               title: '24/7 Support',
-              desc: 'We’re available around the clock to assist you.',
-              icon: <LifeBuoy size={50} className='text-[#F59E0B]' />, // Using Lucide icon
+              desc: 'We’re available anytime.',
+              icon: <LifeBuoy size={50} className='text-[#F59E0B]' />,
             },
           ].map((feature, index) => (
-            <div
+            <motion.div
               key={index}
               className='border border-[#262626] rounded-xl p-6 flex flex-col items-center'
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             >
               <div className='mb-4'>{feature.icon}</div>
               <h3 className='text-lg font-semibold mt-4'>{feature.title}</h3>
               <p className='text-sm text-[#cccccc] text-center mt-2'>
                 {feature.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -129,16 +118,19 @@ export default function AboutUs() {
         </h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'>
           {TeamMemberData.map((member) => (
-            <div
+            <motion.div
               key={member.name}
               className='border border-[#262626] rounded-xl overflow-hidden'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
             >
               <Image
                 src={member.image}
                 width={400}
                 height={250}
                 alt={member.name}
-                className='w-full h-60 object-cover'
+                className='w-full h-60 object-cover transition-transform duration-300 hover:scale-105'
               />
               <div className='p-4 text-center'>
                 <h3 className='text-lg font-semibold'>{member.name}</h3>
@@ -153,14 +145,24 @@ export default function AboutUs() {
                 >
                   {expandedMember === member.name ? 'Hide Bio' : 'View Bio'}
                 </button>
-                {expandedMember === member.name && (
-                  <p className='text-sm text-[#cccccc] mt-3'>{member.bio}</p>
-                )}
+                <AnimatePresence>
+                  {expandedMember === member.name && (
+                    <motion.p
+                      className='text-sm text-[#cccccc] mt-3'
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {member.bio}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

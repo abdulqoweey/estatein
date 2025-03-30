@@ -44,7 +44,7 @@ function PropertyCard({ property }: { property: Property }) {
           width={500}
           height={400}
           alt={property.title}
-          className='w-full h-full object-cover rounded-xl'
+          className='w-full h-full object-cover rounded-xl  transition-transform duration-300 hover:scale-105'
         />
         {/* Property Type Badge */}
         {property.type && (
