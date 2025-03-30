@@ -34,7 +34,7 @@ export default function NavBar() {
           <Link href='/'>
             <Image
               aria-hidden
-              src='/Images/Logo.png'
+              src='/Images/logo.png'
               alt='App logo'
               width={150}
               height={150}
