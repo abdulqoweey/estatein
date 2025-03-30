@@ -53,11 +53,12 @@ export default function Herosection() {
         {/* Hero Image */}
         <div className='flex justify-center'>
           <Image
-            src='/Images/hero-container.png'
+            src='/images/hero-container.png'
             alt='Hero Image'
             width={500}
             height={500}
             className='w-full sm:max-w-md md:max-w-lg lg:max-w-xl'
+            priority // Ensures the image loads faster
           />
         </div>
       </div>
@@ -65,11 +66,17 @@ export default function Herosection() {
       {/* ✅ Features Section */}
       <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center px-6 sm:px-12 lg:px-32 my-10'>
         {[
-          { src: 'Home-icon.svg', text: 'Find Your Dream Home' },
-          { src: 'propertymanagement-icon.svg', text: 'Unlock Property Value' },
-          { src: 'property-icon.svg', text: 'Effortless Property Management' },
+          { src: '/icons/home-icon.svg', text: 'Find Your Dream Home' },
           {
-            src: 'investment-icon.svg',
+            src: '/icons/propertymanagement-icon.svg',
+            text: 'Unlock Property Value',
+          },
+          {
+            src: '/icons/property-icon.svg',
+            text: 'Effortless Property Management',
+          },
+          {
+            src: '/icons/investment-icon.svg',
             text: 'Smart Investments, Informed Decisions',
           },
         ].map((feature, index) => (
@@ -81,7 +88,7 @@ export default function Herosection() {
               src={feature.src}
               width={50}
               height={50}
-              alt='Feature Icon'
+              alt={feature.text}
               className='w-16 h-16 mx-auto'
             />
             <h1 className='m-3'>{feature.text}</h1>
