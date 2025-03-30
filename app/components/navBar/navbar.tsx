@@ -35,7 +35,7 @@ export default function NavBar() {
             <Image
               aria-hidden
               src='/Images/app-logo.png'
-              alt='App logo'
+              alt='Estatein Logo'
               width={150}
               height={150}
               className='w-24 sm:w-36 md:w-40'
