@@ -28,17 +28,18 @@ export default function NavBar() {
 
   return (
     <nav className='bg-[#1A1A1A] text-white border-b border-[#262626] fixed top-0 left-0 w-full opacity-95 z-50'>
-      <div className='px-6 sm:px-12 lg:px-32 py-5 flex justify-between items-center '>
-        {/* Logo */}
+      <div className='px-6 sm:px-12 lg:px-32 py-5 flex justify-between items-center'>
+        {/* ✅ Logo */}
         <div>
           <Link href='/'>
             <Image
-              aria-hidden
-              src='/images/logo.jpg'
+              src='/images/logo.jpg' // Ensure this path matches your file structure
               alt='Estatein Logo'
               width={150}
               height={150}
+              priority // Ensures fast loading
               className='w-24 sm:w-36 md:w-40'
+              aria-hidden='true'
             />
           </Link>
         </div>
@@ -60,7 +61,7 @@ export default function NavBar() {
           ))}
         </ul>
 
-        {/* Contact Button */}
+        {/* ✅ Contact Button */}
         <div className='hidden sm:block'>
           <Link
             href='/contact'
@@ -70,7 +71,7 @@ export default function NavBar() {
           </Link>
         </div>
 
-        {/* User Navbar */}
+        {/* ✅ User Navbar */}
         <UserNavbar />
 
         {/* ✅ Mobile Menu Toggle */}
@@ -90,14 +91,14 @@ export default function NavBar() {
               { href: '/', label: 'Home' },
               { href: '/about', label: 'About Us' },
               { href: '/propertylist', label: 'Properties' },
-              { href: '/', label: 'Services' },
-              { href: '/', label: 'Contact Us' },
+              { href: '/services', label: 'Services' },
+              { href: '/contact', label: 'Contact Us' },
             ].map((item, index) => (
               <li key={index}>
                 <Link
                   href={item.href}
                   className='block py-2 text-sm hover:bg-[#262626] transition'
-                  onClick={() => setIsOpen(false)} // Close on link click
+                  onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   {item.label}
                 </Link>
