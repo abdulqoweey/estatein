@@ -33,7 +33,7 @@ export default function NavBar() {
         <div>
           <Link href='/'>
             <Image
-              src='/images/logo.jpg' // Ensure this path matches your file structure
+              src='/images/logo.png' // Ensure this path matches your file structure
               alt='Estatein Logo'
               width={150}
               height={150}
