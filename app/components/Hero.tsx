@@ -53,7 +53,7 @@ export default function Herosection() {
         {/* Hero Image */}
         <div className='flex justify-center'>
           <Image
-            src='/images/clientImage.png'
+            src='./images/app-logo.png'
             alt='Hero Image'
             width={500}
             height={500}
