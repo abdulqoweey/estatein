@@ -66,17 +66,17 @@ export default function Herosection() {
       {/* ✅ Features Section */}
       <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center px-6 sm:px-12 lg:px-32 my-10'>
         {[
-          { src: '/icons/home-icon.svg', text: 'Find Your Dream Home' },
+          { src: '/home-icon.svg', text: 'Find Your Dream Home' },
           {
-            src: '/icons/propertymanagement-icon.svg',
+            src: '/propertymanagement-icon.svg',
             text: 'Unlock Property Value',
           },
           {
-            src: '/icons/property-icon.svg',
+            src: '/property-icon.svg',
             text: 'Effortless Property Management',
           },
           {
-            src: '/icons/investment-icon.svg',
+            src: '/investment-icon.svg',
             text: 'Smart Investments, Informed Decisions',
           },
         ].map((feature, index) => (
