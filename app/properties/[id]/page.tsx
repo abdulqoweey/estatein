@@ -20,7 +20,7 @@ const PropertyDetails = () => {
     )
   }
 
-  const iconMap: Record<string, JSX.Element> = {
+  const iconMap: Record<string, React.ReactNode> = {
     bedroom: <Bed size={18} className='text-[#703BF7]' />,
     bathroom: <Bath size={18} className='text-[#34D399]' />,
     villa: <Home size={18} className='text-[#F59E0B]' />,
