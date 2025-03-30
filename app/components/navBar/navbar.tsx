@@ -34,7 +34,7 @@ export default function NavBar() {
           <Link href='/'>
             <Image
               aria-hidden
-              src='/Images/app-logo.png'
+              src='/images/logo.jpg'
               alt='Estatein Logo'
               width={150}
               height={150}
