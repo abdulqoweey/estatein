@@ -1,15 +1,17 @@
 import FaqPage from './Faq/page'
 import Herosection from './components/Hero'
 import FeaturedProperty from './components/featured'
+// import TestData from './test'
 import TestimonialPage from './testimonials/page'
 
 export default function Home() {
   return (
-    <div>
+    <div className='text-white'>
       <Herosection />
       <FeaturedProperty />
       <TestimonialPage />
       <FaqPage />
+      {/* <TestData /> */}
 
       {/* CTA Section */}
       <div className='pt-16'>

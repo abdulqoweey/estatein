@@ -3,7 +3,7 @@ import TestimonialCard from '../components/testimonialModal'
 
 export default function TestimonialPage() {
   return (
-    <div className='text-white pt-32 px-6 sm:px-16'>
+    <div className='text-white pt-32 px-6 sm:px-32'>
       {/* Heading & Description */}
       <div className='text-center sm:text-left'>
         <Image
